@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace Exercise3
+namespace Exercise3.LibraryExceptions
 {
     internal class BookNotFoundException : Exception
     {
@@ -9,8 +9,8 @@ namespace Exercise3
             SerializationInfo info,
             StreamingContext context) : base(info, context)
         {
-
         }
+
         public BookNotFoundException()
         {
         }
@@ -23,7 +23,6 @@ namespace Exercise3
         public BookNotFoundException(string message, Exception innerException)
             : base(message, innerException)
         {
-
         }
     }
 }

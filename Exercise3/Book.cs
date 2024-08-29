@@ -1,6 +1,6 @@
 ﻿namespace Exercise3
 {
-    internal class Book
+    public class Book
     {
         public string Title { get; }
         public string ISBN { get; }
@@ -12,5 +12,8 @@
             ISBN = isbn;
             IsCheckedOut = false;
         }
+
+        public override string ToString() =>
+            $"Title: {Title}, ISBN: {ISBN}";
     }
 }

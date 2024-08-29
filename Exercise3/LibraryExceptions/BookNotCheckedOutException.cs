@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace Exercise3
+namespace Exercise3.LibraryExceptions
 {
     [Serializable]
     internal class BookNotCheckedOutException : Exception
@@ -10,11 +10,10 @@ namespace Exercise3
             SerializationInfo info,
             StreamingContext context) : base(info, context)
         {
-
         }
+
         public BookNotCheckedOutException()
         {
-
         }
 
         public BookNotCheckedOutException(string message)
@@ -25,7 +24,6 @@ namespace Exercise3
         public BookNotCheckedOutException(string message, Exception innerException)
             : base(message, innerException)
         {
-
         }
     }
 }

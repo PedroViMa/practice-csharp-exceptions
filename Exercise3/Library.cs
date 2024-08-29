@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Exercise3.LibraryExceptions;
 using System.Collections.Generic;
+using System.Text;
 
 namespace Exercise3
 {
-    internal class Library
+    public class Library
     {
         private readonly List<Book> _books;
 
@@ -17,7 +18,7 @@ namespace Exercise3
             _books.Add(book);
         }
 
-        public void RemoveBook(string isbn)
+        public string RemoveBook(string isbn)
         {
             Book removeBook = GetBook(isbn);
             if (removeBook == null)
@@ -25,9 +26,10 @@ namespace Exercise3
                 throw new BookNotFoundException("The book yo want to remove does not exist.");
             }
             _books.Remove(removeBook);
+            return $"The book {removeBook.Title} has been removed from the library.";
         }
 
-        public void CheckOutBook(string isbn)
+        public string CheckOutBook(string isbn)
         {
             Book book = GetBook(isbn);
 
@@ -41,9 +43,10 @@ namespace Exercise3
             }
 
             book.IsCheckedOut = true;
+            return $"The book {book.Title} is now ckecked out.";
         }
 
-        public void ReturnBook(string isbn)
+        public string ReturnBook(string isbn)
         {
             Book book = GetBook(isbn);
 
@@ -57,6 +60,7 @@ namespace Exercise3
             }
 
             book.IsCheckedOut = true;
+            return $"The book {book.Title} was successfully returned.";
         }
 
         public Book GetBook(string isbn)
@@ -71,14 +75,17 @@ namespace Exercise3
             return null;
         }
 
-        public void ListAllBooks()
+        public string ListAllBooks()
         {
+            StringBuilder stringBuilder = new StringBuilder();
             foreach(Book book in _books)
             {
-                Console.WriteLine("------------------------------");
-                Console.WriteLine($"Title: {book.Title}");
-                Console.WriteLine($"Title: {book.ISBN}");
+                stringBuilder.AppendLine("------------------------------")
+                    .AppendLine(book.ToString());
             }
+            stringBuilder.AppendLine("------------------------------");
+
+            return stringBuilder.ToString();
         }
     }
 }

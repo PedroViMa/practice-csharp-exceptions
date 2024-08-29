@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Exercise3.Menu;
+using System;
 
 namespace Exercise3
 {
@@ -7,25 +7,19 @@ namespace Exercise3
     {
         static void Main(string[] args)
         {
-            string isbnToRemove;
             Library library = new Library();
             library.AddBook(new Book("Titulo", "ISBN"));
             library.AddBook(new Book("Titul2", "ISBN2"));
 
-            library.ListAllBooks();
-
+            LibraryMenu libraryMenu = new LibraryMenu(library);
             try
             {
-                Console.WriteLine("Enter isbn of the book to remove.");
-                isbnToRemove = Console.ReadLine();
-
-                library.RemoveBook(isbnToRemove);
+                libraryMenu.Menu();
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                Console.WriteLine("Unexpected error. The app will close.");
             }
-
         }
     }
 }
